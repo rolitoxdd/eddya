@@ -1,2 +1,4 @@
 html: true
-output: dist
+output: dist/
+inputDir: .
+allowLocalFiles: true
