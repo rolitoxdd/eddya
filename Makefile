@@ -14,7 +14,6 @@ create-index:
     -H "." \
     -L 1 \
     --noreport \
-    --houtro ""\
     -I "index.html" \
     -T "EDDYA" \
     --ignore-case \
