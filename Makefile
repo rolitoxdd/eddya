@@ -1,7 +1,7 @@
 build-all: build-html build-pdf build-pptx create-index
 
 build-html:
-	marp -I . && cp -r images dist/ 
+	rm -rf dist/ && marp -I . && cp -r images dist/ 
 
 build-pdf:
 	marp --pdf -I .
