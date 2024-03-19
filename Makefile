@@ -9,6 +9,11 @@ build-pdf:
 build-pptx:
 	marp --pptx -I .
 
+dev:
+	mkdir -p dist &&\
+  ln -s $(PWD)/images $(PWD)/dist/images &&\
+  marp --watch -I .
+
 create-index: 
 	cd dist && sh -c 'tree \
     -H "." \
