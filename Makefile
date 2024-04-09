@@ -11,6 +11,7 @@ build-pptx:
 
 dev:
 	mkdir -p dist &&\
+	rm -f $(PWD)/images/images &&\
   ln -s $(PWD)/images $(PWD)/dist/images &&\
   marp --watch -I .
 
