@@ -5,28 +5,30 @@ public class Ex3 {
   static boolean checkBalancedParentheses(String s) {
     Stack<Character> stack = new Stack<>();
     for (int i = 0; i < s.length(); i++) {
-      char c = s.charAt(i);
-      if (c == '(' || c == '[' || c == '{') {
-        stack.push(c);
-      } else if (c == ')' || c == ']' || c == '}') {
-        if (stack.isEmpty()) {
-          return false;
-        }
+      if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {
+        stack.push(s.charAt(i));
+      } else {
         char top = stack.pop();
-        if ((c == ')' && top != '(') || (c == ']' && top != '[') || (c == '}' && top != '{')) {
+        if (s.charAt(i) == ')' && top == '(') {
+        } else if (s.charAt(i) == ']' && top == '[') {
+        } else if (s.charAt(i) == '}' && top == '{') {
+        } else {
           return false;
         }
       }
     }
-    return stack.isEmpty();
+    if (stack.isEmpty()) {
+      return true;
+    }
+    return false;
   }
 
   public static void main(String[] args) {
-    System.out.println(checkBalancedParentheses("()")); // true
-    System.out.println(checkBalancedParentheses("()[]{}")); // true
-    System.out.println(checkBalancedParentheses("(]")); // false
-    System.out.println(checkBalancedParentheses("([)]")); // false
-    System.out.println(checkBalancedParentheses("{[]}")); // true
+    System.out.println(check("{()")); // true
+    System.out.println(check("()[]{}")); // true
+    System.out.println(check("(]")); // false
+    System.out.println(check("([)]")); // false
+    System.out.println(check("{[]}")); // true
   }
 
 }
