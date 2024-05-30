@@ -188,16 +188,21 @@
     size--;
     sink(<span class="hljs-number">0</span>);
   }
-  <span class="hljs-keyword">void</span> <span class="hljs-title function_">sink</span><span class="hljs-params">(<span class="hljs-type">int</span> k)</span> {
-    <span class="hljs-keyword">while</span> (<span class="hljs-number">2</span>*k+<span class="hljs-number">1</span> &lt; size) {
-      <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>*k+<span class="hljs-number">1</span>;
-      <span class="hljs-keyword">if</span> (j+<span class="hljs-number">1</span> &lt; size &amp;&amp; heap[j] &lt; heap[j+<span class="hljs-number">1</span>]) j++;
-      <span class="hljs-keyword">if</span> (heap[k] &gt;= heap[j]) <span class="hljs-keyword">break</span>;
-      <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> heap[k];
-      heap[k] = heap[j];
-      heap[j] = temp;
-      k = j;
+  <span class="hljs-keyword">void</span> <span class="hljs-title function_">sink</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span> {
+    <span class="hljs-keyword">while</span> (<span class="hljs-number">2</span> * index + <span class="hljs-number">1</span> &lt; size) {
+      <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span> * index + <span class="hljs-number">1</span>;
+      <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span> * index + <span class="hljs-number">2</span>;
+      <span class="hljs-type">int</span> <span class="hljs-variable">largest</span> <span class="hljs-operator">=</span> left;
+      <span class="hljs-keyword">if</span> (right &lt; size &amp;&amp; arr[right] &gt; arr[left]) {
+        largest = right;
+      }
+      <span class="hljs-keyword">if</span> (arr[index] &gt;= arr[largest]) {
+        <span class="hljs-keyword">break</span>;
+      }
+      swap(index, largest);
+      index = largest;
     }
+
   }
 </code></pre>
 <footer>Priority Queue y Heap</footer>
